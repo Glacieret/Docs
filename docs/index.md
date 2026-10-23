@@ -12,5 +12,19 @@ hero:
     - theme: alt
       text: 知识笔记
       link: /notes/
+features:
+  - icon: 🎮
+    title: 图形学
+    details: 但愿凉喵喵不会梦见vulkan…
+    link: /notes
 
+  - icon: ⚡
+    title: Modern C++
+    details: 赞美欧姆弥赛亚！
+    link: /notes
+
+  - icon: 🧩
+    title: Github
+    details: 就是，凉喵喵也有一个梦想啦^_^
+    link: https://github.com/Glacieret
 ---
