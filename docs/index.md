@@ -1,0 +1,25 @@
+---
+layout: home
+
+hero:
+  name: "Glacieret"
+  text: "化作流星，化作晚风，化作卡门线上的花"
+  tagline: 凉河月是爱，凉河月是生命！
+  actions:
+    - theme: brand
+      text: 📖 进入博客
+      link: /posts/Clausewitzz
+    - theme: alt
+      text: 📚 知识笔记
+      link: /notes/
+
+features:
+  - title: Schedules
+    details: Recent schedules & thoughts.
+    link: /posts/Clausewitzz
+  - title: Docs
+    details: Computer Graphic, Game Development, Mathematics.
+    link: /notes/
+  - title: About me
+    details: A student of HIT,Majoring in Big Data Management&Application.
+---
