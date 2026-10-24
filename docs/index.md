@@ -8,10 +8,10 @@ hero:
   actions:
     - theme: brand
       text: 进入博客
-      link: /posts/
+      link: /posts/index.md
     - theme: alt
       text: 知识笔记
-      link: /notes/
+      link: /notes/index.md
 features:
   - icon: 🎮
     title: 图形学
