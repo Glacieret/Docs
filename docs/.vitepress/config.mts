@@ -2,6 +2,8 @@ import { defineConfig } from 'vitepress'
 import { generateSidebar } from 'vitepress-sidebar'
 
 export default defineConfig({
+  head: [
+  ['link', { rel: 'icon', sizes: '180x180', href: '/Anon.png' }],],
   title: "Glacieret",
   description: "个人笔记与技术博客",
 
