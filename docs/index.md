@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Glacieret"
   text: "化作流星，化作晚风，化作卡门线上的花"
-  tagline: 凉河月是爱，凉河月是生命！
+  tagline: 采血眠花，幽蝶留芳
   actions:
     - theme: brand
       text: 进入博客
