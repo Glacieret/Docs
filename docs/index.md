@@ -20,7 +20,7 @@ features:
 
   - icon: ⚡
     title: Modern C++
-    details: 赞美欧姆弥赛亚！
+    details: 哦耶~！
     link: /notes
 
   - icon: 🧩

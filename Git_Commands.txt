@@ -1,3 +1,6 @@
 git add .
 git commit -m "Update Something"
 git push
+
+git config --global http.proxy http://127.0.0.1:58110
+git config --global https.proxy http://127.0.0.1:58110
