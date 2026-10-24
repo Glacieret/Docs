@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: 进入博客
-      link: /posts/Clausewitzz
+      link: /posts/
     - theme: alt
       text: 知识笔记
       link: /notes/
