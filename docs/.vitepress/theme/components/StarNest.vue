@@ -11,7 +11,7 @@ const canvasRef = ref(null)
 const containerRef = ref(null)
 let animationId = null
 
-// 适配后的 GLSL 代码 (处理了 Shadertoy 特有的宏和变量)
+// 这是包装好的 Star Nest 着色器代码
 const fragmentShaderSource = `
 precision highp float;
 uniform vec2 iResolution;
@@ -84,29 +84,20 @@ onMounted(() => {
   const container = containerRef.value
   const gl = canvas.getContext('webgl')
 
-  if (!gl) {
-    console.error('WebGL not supported')
-    return
-  }
+  if (!gl) return
 
-  // 监听鼠标 (适配 iMouse)
+  // 监听鼠标事件 (Star Nest 支持鼠标改变视角)
   let mouseX = 0, mouseY = 0
   canvas.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect()
     mouseX = e.clientX - rect.left
-    mouseY = canvas.height - (e.clientY - rect.top) // 翻转 Y 轴
+    mouseY = canvas.height - (e.clientY - rect.top)
   })
 
-  // 编译着色器工具函数
   const compileShader = (type, source) => {
     const shader = gl.createShader(type)
     gl.shaderSource(shader, source)
     gl.compileShader(shader)
-    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-      console.error(gl.getShaderInfoLog(shader))
-      gl.deleteShader(shader)
-      return null
-    }
     return shader
   }
 
@@ -119,7 +110,6 @@ onMounted(() => {
   gl.linkProgram(program)
   gl.useProgram(program)
 
-  // 设置全屏矩形顶点
   const positionBuffer = gl.createBuffer()
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
@@ -131,18 +121,15 @@ onMounted(() => {
   gl.enableVertexAttribArray(positionLocation)
   gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0)
 
-  // 获取 Uniform 位置
   const iTimeLoc = gl.getUniformLocation(program, 'iTime')
   const iResolutionLoc = gl.getUniformLocation(program, 'iResolution')
   const iMouseLoc = gl.getUniformLocation(program, 'iMouse')
 
   const startTime = Date.now()
 
-  // 渲染循环
   const render = () => {
-    // 动态调整 Canvas 尺寸以适应容器
     const width = container.clientWidth
-    const height = 400 // 你可以自定义高度
+    const height = 400
     if (canvas.width !== width || canvas.height !== height) {
       canvas.width = width
       canvas.height = height
@@ -163,9 +150,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  if (animationId) {
-    cancelAnimationFrame(animationId)
-  }
+  if (animationId) cancelAnimationFrame(animationId)
 })
 </script>
 
@@ -176,10 +161,12 @@ onBeforeUnmount(() => {
   overflow: hidden;
   margin: 16px 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #000;
 }
 canvas {
   display: block;
   width: 100%;
-  height: 400px; /* 固定高度或者按需调整 */
+  height: 400px;
+  cursor: crosshair; /* 给画布加上十字光标，提示用户可以鼠标交互 */
 }
 </style>
